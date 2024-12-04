@@ -10,19 +10,27 @@ import { APP_GUARD } from '@nestjs/core';
 import { FileService } from 'src/files/files.service';
 import { MailerService } from 'src/mail/mailer.service';
 import { JwtStrategy } from './strategy/jwt.strategy';
+import { JwtActivateGuard } from './guard/jwt.guard';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, FileService, MailerService,JwtStrategy],
+  providers: [
+    AuthService,
+    FileService,
+    MailerService,
+    JwtStrategy,
+    JwtActivateGuard,
+  ],
   imports: [
     UsersModule,
     PassportModule,
     JwtModule.register({
       privateKey: `${process.env.TOKEN_SECRET}`,
       signOptions: {
-        expiresIn: "24h"
-      }
-  })
-  ]    
+        expiresIn: '24h',
+      },
+    }),
+  ],
+  exports: [JwtStrategy, JwtActivateGuard],
 })
 export class AuthModule {}

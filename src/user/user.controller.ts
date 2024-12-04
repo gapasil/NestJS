@@ -3,12 +3,12 @@ import { UsersService } from './users.service';
 import { RoleAdminGuard } from 'src/roles/guard/rolesAdmin.guard';
 import { JwtActivateGuard } from 'src/auth/guard/jwt.guard';
 
-@Controller("user")
+@Controller('user')
 export class UserController {
   constructor(private usersService: UsersService) {}
 
-  @UseGuards(JwtActivateGuard)
   @Get('profile')
+  @UseGuards(JwtActivateGuard)
   getProfile(@Request() req) {
     return this.usersService.getUser(req);
   }
@@ -39,7 +39,7 @@ export class UserController {
   putModerUser(@Request() req) {
     return this.usersService.putModerUser(req);
   }
-  
+
   @UseGuards(RoleAdminGuard)
   @Get('getallusers')
   getAllUsers() {

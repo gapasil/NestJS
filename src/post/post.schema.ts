@@ -6,18 +6,17 @@ export type PostModel = Post & Document;
 
 @Schema()
 export class Post {
-
   @Prop({ required: true })
   file: string;
 
   @Prop({ required: true })
   idUser: string;
 
-  @Prop({ required: true , index: true })
-  headers:string;
+  @Prop({ required: true, index: true })
+  headers: string;
 
-  @Prop({ required: true , index: true })
-  paragraph:string;
+  @Prop({ required: true, index: true })
+  paragraph: string;
 
   @Prop({ required: true })
   date: number;
@@ -26,20 +25,20 @@ export class Post {
   views: number;
 
   @Prop({ required: true })
-  theme:string
+  theme: string;
 
   @Prop({ required: true })
-  languagePost:string
+  languagePost: string;
 
   @Prop()
-  imageView:string
+  imageView: string;
 
   @Prop({ required: true })
-  ipViewed:Array<string>
+  ipViewed: Array<string>;
 }
 
 const PostSchema = SchemaFactory.createForClass(Post);
 
-PostSchema.index({paragraph:"text",headers:"text"})
+PostSchema.index({ paragraph: 'text', headers: 'text' });
 
-export {PostSchema}
+export { PostSchema };

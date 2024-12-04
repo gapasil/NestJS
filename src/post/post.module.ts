@@ -10,11 +10,10 @@ import { PostService } from './post.service';
   providers: [PostService, FileService],
   exports: [
     PostService,
-    MongooseModule.forFeature([{name: Post.name ,schema: PostSchema}])
+    MongooseModule.forFeature([{ name: Post.name, schema: PostSchema }]),
   ],
   imports: [
-    MongooseModule.forFeature([{name: Post.name ,schema: PostSchema}]),
-  ]
+    MongooseModule.forFeature([{ name: Post.name, schema: PostSchema }]),
+  ],
 })
 export class PostModule {}
-    
